@@ -10,7 +10,10 @@ export function SidebarButton({ children, variant }) {
   }
 
   return (
-    <a className={`rounded-lg px-6 py-3 ${getVariantStyles()}`} href="">
+    <a
+      className={`flex items-center gap-1 rounded-lg px-6 py-3 ${getVariantStyles()}`}
+      href=""
+    >
       {children}
     </a>
   );

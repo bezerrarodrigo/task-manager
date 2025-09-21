@@ -1,5 +1,12 @@
 import { Button } from './Button.jsx';
-import { IconPlus, IconTrash } from '@tabler/icons-react';
+import {
+  IconCloud,
+  IconMoon,
+  IconPlus,
+  IconSun,
+  IconTrash,
+} from '@tabler/icons-react';
+import { TaskTimeHeader } from './TaskTimeHeader.jsx';
 
 export function Tasks() {
   return (
@@ -21,6 +28,11 @@ export function Tasks() {
             <IconPlus size={16} />
           </Button>
         </div>
+      </div>
+      <div className="mt-6 space-y-6 rounded-lg bg-white p-6 shadow">
+        <TaskTimeHeader label="Manhã" icon={<IconSun size={20} />} />
+        <TaskTimeHeader label="Tarde" icon={<IconCloud size={20} />} />
+        <TaskTimeHeader label="Noite" icon={<IconMoon size={20} />} />
       </div>
     </div>
   );

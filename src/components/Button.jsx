@@ -10,7 +10,7 @@ export function Button({ children, variant = 'primary' }) {
 
   return (
     <button
-      className={`flex items-center gap-1 rounded-md px-3 py-1 text-xs font-semibold transition hover:cursor-pointer hover:opacity-50 ${getVariantStyles()}`}
+      className={`flex items-center gap-1 rounded-md px-3 py-1 text-xs font-semibold transition hover:cursor-pointer hover:opacity-80 ${getVariantStyles()}`}
     >
       {children}
     </button>

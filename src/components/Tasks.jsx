@@ -1,14 +1,25 @@
 import { Button } from './Button.jsx';
 import {
-  IconCloud,
+  IconCloudFog,
   IconMoon,
   IconPlus,
   IconSun,
   IconTrash,
 } from '@tabler/icons-react';
 import { TaskTimeHeader } from './TaskTimeHeader.jsx';
+import { useState } from 'react';
+import { TASKS } from '../constants/tasks.js';
+import { TaskItem } from './TaskItem.jsx';
 
 export function Tasks() {
+  //states
+  const [tasks] = useState(TASKS);
+
+  // computed
+  const morningTasks = tasks.filter((task) => task.time === 'morning');
+  const afternoonTasks = tasks.filter((task) => task.time === 'afternoon');
+  const nightTasks = tasks.filter((task) => task.time === 'night');
+
   return (
     <div className="w-full px-8 py-16">
       <div className="flex w-full justify-between">
@@ -30,9 +41,24 @@ export function Tasks() {
         </div>
       </div>
       <div className="mt-6 space-y-6 rounded-lg bg-white p-6 shadow">
-        <TaskTimeHeader label="Manhã" icon={<IconSun size={20} />} />
-        <TaskTimeHeader label="Tarde" icon={<IconCloud size={20} />} />
-        <TaskTimeHeader label="Noite" icon={<IconMoon size={20} />} />
+        <div className="space-y-3">
+          <TaskTimeHeader label="Manhã" icon={<IconSun size={20} />} />
+          {morningTasks.map((task) => (
+            <TaskItem key={task.id} task={task} />
+          ))}
+        </div>
+        <div className="space-y-3">
+          <TaskTimeHeader label="Tarde" icon={<IconCloudFog size={20} />} />
+          {afternoonTasks.map((task) => (
+            <TaskItem key={task.id} task={task} />
+          ))}
+        </div>
+        <div className="space-y-3">
+          <TaskTimeHeader label="Noite" icon={<IconMoon size={20} />} />
+          {nightTasks.map((task) => (
+            <TaskItem key={task.id} task={task} />
+          ))}
+        </div>
       </div>
     </div>
   );

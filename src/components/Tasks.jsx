@@ -13,12 +13,35 @@ import { TaskItem } from './TaskItem.jsx';
 
 export function Tasks() {
   //states
-  const [tasks] = useState(TASKS);
+  const [tasks, setTasks] = useState(TASKS);
 
   // computed
   const morningTasks = tasks.filter((task) => task.time === 'morning');
   const afternoonTasks = tasks.filter((task) => task.time === 'afternoon');
   const nightTasks = tasks.filter((task) => task.time === 'night');
+
+  //functions
+  function handleTaskStatus(taskID) {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id !== taskID) {
+        return task;
+      }
+
+      if (task.status === 'done') {
+        return { ...task, status: 'pending' };
+      }
+
+      if (task.status === 'pending') {
+        return { ...task, status: 'in_progress' };
+      }
+
+      if (task.status === 'in_progress') {
+        return { ...task, status: 'done' };
+      }
+    });
+
+    setTasks(updatedTasks);
+  }
 
   return (
     <div className="w-full px-8 py-16">
@@ -44,19 +67,19 @@ export function Tasks() {
         <div className="space-y-3">
           <TaskTimeHeader label="Manhã" icon={<IconSun size={20} />} />
           {morningTasks.map((task) => (
-            <TaskItem key={task.id} task={task} />
+            <TaskItem key={task.id} task={task} handleTask={handleTaskStatus} />
           ))}
         </div>
         <div className="space-y-3">
           <TaskTimeHeader label="Tarde" icon={<IconCloudFog size={20} />} />
           {afternoonTasks.map((task) => (
-            <TaskItem key={task.id} task={task} />
+            <TaskItem key={task.id} task={task} handleTask={handleTaskStatus} />
           ))}
         </div>
         <div className="space-y-3">
           <TaskTimeHeader label="Noite" icon={<IconMoon size={20} />} />
           {nightTasks.map((task) => (
-            <TaskItem key={task.id} task={task} />
+            <TaskItem key={task.id} task={task} handleTask={handleTaskStatus} />
           ))}
         </div>
       </div>

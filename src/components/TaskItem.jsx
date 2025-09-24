@@ -1,6 +1,12 @@
-import { IconCheck, IconExternalLink, IconProgress } from '@tabler/icons-react';
+import {
+  IconCheck,
+  IconExternalLink,
+  IconProgress,
+  IconTrash,
+} from '@tabler/icons-react';
+import { Button } from './Button.jsx';
 
-export function TaskItem({ task, handleTask }) {
+export function TaskItem({ task, handleCheckBoxClick, handleDeleteClick }) {
   function getStatusStyles() {
     if (task.status === 'done') {
       return 'bg-[#00ADB5]/10 text-[#00ADB5]';
@@ -23,7 +29,7 @@ export function TaskItem({ task, handleTask }) {
             checked={task.status === 'done'}
             type="checkbox"
             className="absolute h-full w-full cursor-pointer opacity-0"
-            onClick={() => handleTask(task.id)}
+            onChange={() => handleCheckBoxClick(task.id)}
           />
           {task.status === 'done' && (
             <IconCheck size={16} className="text-white" />
@@ -34,9 +40,14 @@ export function TaskItem({ task, handleTask }) {
         </label>
         <span className="text-sm">{task.title}</span>
       </div>
-      <a className="transition hover:opacity-75" href="#">
-        <IconExternalLink className="text-gray-400" size={18} />
-      </a>
+      <div className={'flex items-center'}>
+        <Button variant="ghost" onClick={() => handleDeleteClick(task.id)}>
+          <IconTrash size={18} className="text-gray-400" />
+        </Button>
+        <a className="transition hover:opacity-75" href="#">
+          <IconExternalLink className="text-gray-400" size={18} />
+        </a>
+      </div>
     </div>
   );
 }

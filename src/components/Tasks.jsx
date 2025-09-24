@@ -43,6 +43,11 @@ export function Tasks() {
     setTasks(updatedTasks);
   }
 
+  function handleDeleteClick(taskID) {
+    const updatedTasks = tasks.filter((task) => task.id !== taskID);
+    setTasks(updatedTasks);
+  }
+
   return (
     <div className="w-full px-8 py-16">
       <div className="flex w-full justify-between">
@@ -67,19 +72,34 @@ export function Tasks() {
         <div className="space-y-3">
           <TaskTimeHeader label="Manhã" icon={<IconSun size={20} />} />
           {morningTasks.map((task) => (
-            <TaskItem key={task.id} task={task} handleTask={handleTaskStatus} />
+            <TaskItem
+              key={task.id}
+              task={task}
+              handleTask={handleTaskStatus}
+              handleDeleteClick={handleDeleteClick}
+            />
           ))}
         </div>
         <div className="space-y-3">
           <TaskTimeHeader label="Tarde" icon={<IconCloudFog size={20} />} />
           {afternoonTasks.map((task) => (
-            <TaskItem key={task.id} task={task} handleTask={handleTaskStatus} />
+            <TaskItem
+              key={task.id}
+              task={task}
+              handleTask={handleTaskStatus}
+              handleDeleteClick={handleDeleteClick}
+            />
           ))}
         </div>
         <div className="space-y-3">
           <TaskTimeHeader label="Noite" icon={<IconMoon size={20} />} />
           {nightTasks.map((task) => (
-            <TaskItem key={task.id} task={task} handleTask={handleTaskStatus} />
+            <TaskItem
+              key={task.id}
+              task={task}
+              handleTask={handleTaskStatus}
+              handleDeleteClick={handleDeleteClick}
+            />
           ))}
         </div>
       </div>

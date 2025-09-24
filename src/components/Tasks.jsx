@@ -1,4 +1,3 @@
-import { Button } from './Button.jsx';
 import {
   IconCloudFog,
   IconMoon,
@@ -6,11 +5,13 @@ import {
   IconSun,
   IconTrash,
 } from '@tabler/icons-react';
-import { TaskTimeHeader } from './TaskTimeHeader.jsx';
 import { useState } from 'react';
-import { TASKS } from '../constants/tasks.js';
-import { TaskItem } from './TaskItem.jsx';
 import { toast } from 'sonner';
+
+import { TASKS } from '../constants/tasks.js';
+import { Button } from './Button.jsx';
+import { TaskItem } from './TaskItem.jsx';
+import { TaskTimeHeader } from './TaskTimeHeader.jsx';
 
 export function Tasks() {
   //states

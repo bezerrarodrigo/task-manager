@@ -4,6 +4,7 @@ import {
   IconProgress,
   IconTrash,
 } from '@tabler/icons-react';
+
 import { Button } from './Button.jsx';
 
 export function TaskItem({ task, handleTask, handleDeleteClick }) {

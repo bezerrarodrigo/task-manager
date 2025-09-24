@@ -1,4 +1,5 @@
 import { IconHome2, IconListCheck } from '@tabler/icons-react';
+
 import { SidebarButton } from './SidebarButton';
 
 export function Sidebar() {

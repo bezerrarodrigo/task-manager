@@ -10,6 +10,7 @@ import { TaskTimeHeader } from './TaskTimeHeader.jsx';
 import { useState } from 'react';
 import { TASKS } from '../constants/tasks.js';
 import { TaskItem } from './TaskItem.jsx';
+import { toast } from 'sonner';
 
 export function Tasks() {
   //states
@@ -28,14 +29,17 @@ export function Tasks() {
       }
 
       if (task.status === 'done') {
+        toast.success('Tarefa marcada como pendente!');
         return { ...task, status: 'pending' };
       }
 
       if (task.status === 'pending') {
+        toast.success('Tarefa marcada como em andamento!');
         return { ...task, status: 'in_progress' };
       }
 
       if (task.status === 'in_progress') {
+        toast.success('Tarefa marcada como concluída!');
         return { ...task, status: 'done' };
       }
     });
@@ -46,6 +50,7 @@ export function Tasks() {
   function handleDeleteClick(taskID) {
     const updatedTasks = tasks.filter((task) => task.id !== taskID);
     setTasks(updatedTasks);
+    toast.success('Tarefa removida com sucesso!');
   }
 
   return (

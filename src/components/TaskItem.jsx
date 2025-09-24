@@ -6,7 +6,7 @@ import {
 } from '@tabler/icons-react';
 import { Button } from './Button.jsx';
 
-export function TaskItem({ task, handleCheckBoxClick, handleDeleteClick }) {
+export function TaskItem({ task, handleTask, handleDeleteClick }) {
   function getStatusStyles() {
     if (task.status === 'done') {
       return 'bg-[#00ADB5]/10 text-[#00ADB5]';
@@ -29,7 +29,7 @@ export function TaskItem({ task, handleCheckBoxClick, handleDeleteClick }) {
             checked={task.status === 'done'}
             type="checkbox"
             className="absolute h-full w-full cursor-pointer opacity-0"
-            onChange={() => handleCheckBoxClick(task.id)}
+            onChange={() => handleTask(task.id)}
           />
           {task.status === 'done' && (
             <IconCheck size={16} className="text-white" />

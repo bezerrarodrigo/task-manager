@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 
 import { TASKS } from '../constants/tasks.js';
+import { AddTaskDialog } from './AddTaskDialog.jsx';
 import { Button } from './Button.jsx';
 import { TaskItem } from './TaskItem.jsx';
 import { TaskTimeHeader } from './TaskTimeHeader.jsx';
@@ -16,6 +17,7 @@ import { TaskTimeHeader } from './TaskTimeHeader.jsx';
 export function Tasks() {
   //states
   const [tasks, setTasks] = useState(TASKS);
+  const [isOpen, setIsOpen] = useState(false);
 
   // computed
   const morningTasks = tasks.filter((task) => task.time === 'morning');
@@ -68,10 +70,12 @@ export function Tasks() {
             Limpar tarefas
             <IconTrash size={16} />
           </Button>
-          <Button>
+          <Button onClick={() => setIsOpen(true)}>
             Nova tarefa
             <IconPlus size={16} />
           </Button>
+
+          <AddTaskDialog isOpen={isOpen} />
         </div>
       </div>
       <div className="mt-6 space-y-6 rounded-lg bg-white p-6 shadow">

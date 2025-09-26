@@ -75,7 +75,7 @@ export function Tasks() {
             <IconPlus size={16} />
           </Button>
 
-          <AddTaskDialog isOpen={isOpen} />
+          <AddTaskDialog isOpen={isOpen} closeDialog={() => setIsOpen(false)} />
         </div>
       </div>
       <div className="mt-6 space-y-6 rounded-lg bg-white p-6 shadow">

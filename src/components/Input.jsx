@@ -1,12 +1,9 @@
+import { InputLabel } from './InputLabel';
+
 export function Input({ label, ...props }) {
   return (
     <div className="flex flex-col space-y-1">
-      <label
-        htmlFor={props.id}
-        className="text-sm font-semibold text-[#35383E]"
-      >
-        {label}
-      </label>
+      <InputLabel {...props}>{label}</InputLabel>
       <input
         {...props}
         id={props.id}

@@ -12,6 +12,8 @@ export function AddTaskDialog({ isOpen, closeDialog, handleAddNewTask }) {
   const [time, setTime] = useState('morning');
   const [description, setDescription] = useState('');
 
+  const isFormInvalid = !title || !description;
+
   //functions
   function handleAdd() {
     handleAddNewTask({
@@ -65,7 +67,12 @@ export function AddTaskDialog({ isOpen, closeDialog, handleAddNewTask }) {
             >
               Cancelar
             </Button>
-            <Button className="w-full" size="lg" onClick={() => handleAdd()}>
+            <Button
+              className="w-full disabled:cursor-not-allowed disabled:opacity-50"
+              size="lg"
+              onClick={handleAdd}
+              disabled={isFormInvalid}
+            >
               Adicionar
             </Button>
           </div>

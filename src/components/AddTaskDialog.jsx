@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { v4 as uuidV4 } from 'uuid';
 
@@ -9,7 +9,7 @@ import { TimeSelect } from './TimeSelect';
 export function AddTaskDialog({ isOpen, closeDialog, handleAddNewTask }) {
   //states
   const [title, setTitle] = useState('');
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState('morning');
   const [description, setDescription] = useState('');
 
   //functions
@@ -22,10 +22,15 @@ export function AddTaskDialog({ isOpen, closeDialog, handleAddNewTask }) {
       status: 'pending',
     });
     closeDialog();
-    setTitle('');
-    setTime('');
-    setDescription('');
   }
+
+  useEffect(() => {
+    if (!isOpen) {
+      setTitle('');
+      setTime('');
+      setDescription('');
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
   return createPortal(

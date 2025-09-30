@@ -56,6 +56,11 @@ export function Tasks() {
     toast.success('Tarefa removida com sucesso!');
   }
 
+  function handleAddTaskSubmit(newTask) {
+    setTasks((prevTasks) => [...prevTasks, newTask]);
+    toast.success('Tarefa adicionada com sucesso!');
+  }
+
   return (
     <div className="w-full px-8 py-16">
       <div className="flex w-full justify-between">
@@ -75,7 +80,11 @@ export function Tasks() {
             <IconPlus size={16} />
           </Button>
 
-          <AddTaskDialog isOpen={isOpen} closeDialog={() => setIsOpen(false)} />
+          <AddTaskDialog
+            isOpen={isOpen}
+            closeDialog={() => setIsOpen(false)}
+            handleAddNewTask={handleAddTaskSubmit}
+          />
         </div>
       </div>
       <div className="mt-6 space-y-6 rounded-lg bg-white p-6 shadow">

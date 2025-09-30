@@ -12,7 +12,7 @@ export function AddTaskDialog({ isOpen, closeDialog, handleAddNewTask }) {
   const [time, setTime] = useState('morning');
   const [description, setDescription] = useState('');
 
-  const isFormInvalid = !title || !description;
+  const isFormInvalid = !title.trim() || !description.trim();
 
   //functions
   function handleAdd() {

@@ -31,8 +31,9 @@ export function AddTaskDialog({ isOpen, closeDialog, handleAddNewTask }) {
       });
     }
 
+    setErrors(newErrors);
+
     if (newErrors.length > 0) {
-      setErrors(newErrors);
       return;
     }
 

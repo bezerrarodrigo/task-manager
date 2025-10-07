@@ -1,3 +1,4 @@
+import { ErrorMessage } from './ErrorMessage';
 import { InputLabel } from './InputLabel';
 
 export function Input({ label, errorMessage, ...props }) {
@@ -9,7 +10,7 @@ export function Input({ label, errorMessage, ...props }) {
         id={props.id}
         className="h-10 w-[296px] rounded-lg border border-gray-100 px-2 py-3 outline-none placeholder:text-sm focus:border-[#00ADB5] focus:ring-1 focus:ring-[#00ADB5]"
       />
-      {errorMessage && <p className="text-xs text-red-400">{errorMessage}</p>}
+      {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { v4 as uuidV4 } from 'uuid';
 
@@ -8,23 +8,27 @@ import { TimeSelect } from './TimeSelect';
 
 export function AddTaskDialog({ isOpen, closeDialog, handleAddNewTask }) {
   //states
-  const [title, setTitle] = useState('');
   const [time, setTime] = useState('morning');
-  const [description, setDescription] = useState('');
   const [errors, setErrors] = useState([]);
+
+  const taskNameInputRef = useRef();
+  const taskDescInputRef = useRef();
 
   //functions
   function handleAdd() {
     const newErrors = [];
 
-    if (!title.trim()) {
+    const taskTitleInput = taskNameInputRef.current.value;
+    const taskDescInput = taskDescInputRef.current.value;
+
+    if (!taskTitleInput.trim()) {
       newErrors.push(...errors, {
         inputName: 'title',
         message: 'Título é obrigatório.',
       });
     }
 
-    if (!description.trim()) {
+    if (!taskDescInput.trim()) {
       newErrors.push(...errors, {
         inputName: 'description',
         message: 'Descrição é obrigatória.',
@@ -39,9 +43,9 @@ export function AddTaskDialog({ isOpen, closeDialog, handleAddNewTask }) {
 
     handleAddNewTask({
       id: uuidV4(),
-      title,
+      title: taskTitleInput,
       time,
-      description,
+      description: taskDescInput,
       status: 'pending',
     });
     closeDialog();
@@ -49,9 +53,7 @@ export function AddTaskDialog({ isOpen, closeDialog, handleAddNewTask }) {
 
   useEffect(() => {
     if (!isOpen) {
-      setTitle('');
       setTime('morning');
-      setDescription('');
     }
   }, [isOpen]);
 
@@ -72,9 +74,8 @@ export function AddTaskDialog({ isOpen, closeDialog, handleAddNewTask }) {
             id="task-name"
             label="Título da tarefa"
             placeholder="Título da tarefa"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
             errorMessage={titleError?.message}
+            ref={taskNameInputRef}
           />
 
           <TimeSelect value={time} onChange={(e) => setTime(e.target.value)} />
@@ -82,9 +83,8 @@ export function AddTaskDialog({ isOpen, closeDialog, handleAddNewTask }) {
             id="task-description"
             label="Descrição"
             placeholder="Descrição"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
             errorMessage={descriptionError?.message}
+            ref={taskDescInputRef}
           />
 
           <div className="flex gap-3">

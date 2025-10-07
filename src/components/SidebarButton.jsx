@@ -1,11 +1,11 @@
 export function SidebarButton({ children, variant }) {
   function getVariantStyles() {
     if (variant === 'default') {
-      return 'text-[#35383E]';
+      return 'text-dark-blue';
     }
 
     if (variant === 'selected') {
-      return 'bg-[#e6f7f8] text-[#00adb5]';
+      return 'bg-primary/10 text-primary';
     }
   }
 

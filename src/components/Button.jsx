@@ -10,10 +10,10 @@ export function Button({
       return 'bg-transparent text-[#818181]';
     }
     if (variant === 'primary') {
-      return 'bg-[#00ADB5] text-white';
+      return 'bg-primary text-white';
     }
     if (variant === 'secondary') {
-      return 'bg-[#EEEEEE] text-[#35383E]';
+      return 'bg-[#EEEEEE] text-dark-blue';
     }
   }
 

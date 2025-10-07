@@ -8,7 +8,7 @@ export function Input({ label, errorMessage, ...props }) {
       <input
         {...props}
         id={props.id}
-        className="h-10 w-[296px] rounded-lg border border-gray-100 px-2 py-3 outline-none placeholder:text-sm focus:border-[#00ADB5] focus:ring-1 focus:ring-[#00ADB5]"
+        className="focus:border-primary focus:ring-primary h-10 w-[296px] rounded-lg border border-gray-100 px-2 py-3 outline-none placeholder:text-sm focus:ring-1"
       />
       {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
     </div>

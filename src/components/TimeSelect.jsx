@@ -6,7 +6,7 @@ export function TimeSelect(props) {
       <InputLabel id="task-time">Período</InputLabel>
       <select
         {...props}
-        className="placeholder-text-[#9A9C9F] w-full appearance-none rounded-lg border border-solid border-[#ececec] px-4 py-2 text-sm outline-[#00ADB5]"
+        className="placeholder-text-base-gray outline-[] border-light-gray w-full appearance-none rounded-lg border border-solid px-4 py-2 text-sm"
         id="task-time"
       >
         <option value="morning">Manhã</option>

@@ -65,7 +65,7 @@ export function Tasks() {
     <div className="w-full px-8 py-16">
       <div className="flex w-full justify-between">
         <div>
-          <span className="text-xs font-semibold text-[#00ADB5]">
+          <span className="text-primary text-xs font-semibold">
             Minhas tarefas
           </span>
           <h2 className="text-2xl font-semibold">Minhas Tarefas</h2>

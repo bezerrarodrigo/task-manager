@@ -10,11 +10,11 @@ import { Button } from './Button.jsx';
 export function TaskItem({ task, handleTask, handleDeleteClick }) {
   function getStatusStyles() {
     if (task.status === 'done') {
-      return 'bg-[#00ADB5]/10 text-[#00ADB5]';
+      return 'bg-primary/10 text-primary';
     } else if (task.status === 'in_progress') {
-      return 'bg-[#FFAA04]/10 text-[#FFAA04]';
+      return 'bg-process/10 text-process';
     } else {
-      return 'bg-[#35383E]/10';
+      return 'bg-dark-blue/10';
     }
   }
 

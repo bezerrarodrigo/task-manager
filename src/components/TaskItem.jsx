@@ -42,7 +42,7 @@ export function TaskItem({ task, handleTask, handleDeleteClick }) {
         <span className="text-sm">{task.title}</span>
       </div>
       <div className={'flex items-center'}>
-        <Button variant="ghost" onClick={() => handleDeleteClick(task.id)}>
+        <Button color="ghost" onClick={() => handleDeleteClick(task.id)}>
           <IconTrash size={18} className="text-gray-400" />
         </Button>
         <a className="transition hover:opacity-75" href="#">

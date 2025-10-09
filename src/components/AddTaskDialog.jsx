@@ -65,8 +65,8 @@ export function AddTaskDialog({ isOpen, closeDialog, handleAddNewTask }) {
   );
 
   return createPortal(
-    <div className="fixed inset-0 flex items-center justify-center backdrop-blur-xs">
-      <div className="flex w-[336px] max-w-[400px] flex-col items-center rounded-xl bg-white p-5">
+    <div className="fixed inset-0 flex items-center justify-center backdrop-blur-sm">
+      <div className="flex w-[336px] max-w-[400px] flex-col items-center rounded-xl bg-white p-5 shadow-2xl">
         <h2 className="text-dark-blue text-lg font-semibold">Nova Tarefa</h2>
         <p className="text-base-gray text-sm">Insira as informações abaixo</p>
         <div className="space-y-2 pt-6">
@@ -91,7 +91,7 @@ export function AddTaskDialog({ isOpen, closeDialog, handleAddNewTask }) {
             <Button
               className="w-full"
               size="lg"
-              variant="secondary"
+              color="secondary"
               onClick={closeDialog}
             >
               Cancelar
